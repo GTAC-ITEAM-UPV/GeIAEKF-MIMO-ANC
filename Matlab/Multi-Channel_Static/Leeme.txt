@@ -1,0 +1,56 @@
+La carpeta contiene una serie de archivos de código matlab que permiten simular un Sistema de ANC
+donde se ejecuta el Algoritmo de Kalman y variantes.
+
+Además, añade una serie de archivos adicionales de código de app de matlab con aplicaciones que 
+permiten analizar los resultados de las simulaciones. 
+
+La información es la siguiente:
+
+
+runANCb.m -> Código 'maestro' que realiza la simulación del sistema de ANC usando uno de los algoritmos
+pre-progamados o un algoritmo nuevo siempre que respete la interación con dicho código
+
+ALGORITMOS:
+fx_kalman.m: Algoritmo de Kalman centralizado propagando la matriz de covarianza, aplicado al ANC
+fx_kalman2.m: Algoritmo de Kalman centralizado propagando la inversa de la matriz de covarianza, aplicado al ANC
+fx_kalmandes2p.m: Algoritmo de Kalman descentralizado propagando la inversa de la matriz de covarianza, 
+                  aplicado al ANC, realizando dos pasadas
+fx_kalmandes3p.m: Algoritmo de Kalman descentralizado propagando la inversa de la matriz de covarianza, 
+                  aplicado al ANC, realizando tres pasadas
+fx_melms: Algoritmo ME-fxlms para usar como referencia si se desea 
+
+
+OTROS:
+creaAF_ANC.m: utilidad para inicializar las estructuras de datos que se usan en runANCb.m y que implementan las 
+	      operaciones de actualización de los coeficientes de los filtros adaptativos según el algoritmo 
+	      implementado
+ir_map.mat: Base de datos de medidas de respuestas al impulso de salas para usar en simulación
+estimaMult.m: Código que cálcula el número de multiplicaciones (aproximadamente) de los algoritmos implementados
+
+UTLIDADES PARA LA EXPLORACIÓN, ANÁLISIS Y COMPARACIÓN DE RESULTADOS:
+analizaANC.mlapp: App de Matlab que al acabar la simulación con runANCb.m permite analizar los resultados.
+		  Se puede invocar si se le añada como parámetro de entrada una estructura de datos como la
+		  que se genera al realizar una simulación. Permite almacenar resultados de simulación para 
+		  usarlos en la aplicación de comparación ComparaANC.mlapp. 
+conf.mlapp: App de Matlab para configurar e invocar desde la App anterior.
+ComparaANC.mlapp: App de Matlab para comparar resultados de simulación.
+confcomp.mlapp: App de Matlab para configurar e invocar desde la App anterior.
+
+ARCHIVOS *.PNG
+Archivos gráficos con iconos usados en las App's de Matlab
+
+
+
+
+CLAVES PARA LA EJECUCIÓN DE runANCb.m
+
+1._ Modificar, si se desea, la señal de ruido (línea 6)
+2._ Seleccionar el sistema acústico (líneas 64-67). Sistema centralizado Z=1, sistema descentralizado Z>=1 
+(la ejecución de un tipo de algoritmo u otro está en la configuración de la estructura del filtrado).
+Si el sistema es descentralizado, J ha de ser igual a K.   
+3._ Creación e inicialización de la estructura del filtrado. Ha de estar en concordancia con el algoritmo 
+a ejecutar. Ejemplos de creación del objeto de filtrado en líneas 179-203
+4._ Selección del algorito a ejecutar
+	Línea 260 si el algoritmo es centralizado
+	Línea 272 si el algoritmo es descentralizdo
+
