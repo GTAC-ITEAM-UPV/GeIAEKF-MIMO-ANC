@@ -54,7 +54,9 @@ Figure 2: Physical real-time SISO ANC setup
 
 The following video shows the GeIAEKF algorithm working in real time on Speedgoat, with the reference noise playing continuously and the primary source position being changed continuously with a constant speed to check the tracking performance of GeIAEKF. Same experiment has been repeated for NLMS and Standard Kalman Filter algorithms for comparison.
 
-[video]
+https://github.com/user-attachments/assets/bdef7bc1-d2eb-4020-ae44-d1b7e5543fbe
+
+
 
 ## Run explanation
 
