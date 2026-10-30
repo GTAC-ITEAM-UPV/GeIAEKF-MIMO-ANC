@@ -32,6 +32,7 @@ PIME-FxNLMS/
 │   ├── adaptative_kalman_like_1x1x1.slx
 │   ├── eIAEKF_1x1x1.slx
 │   └── ...
+├── Article_2_Tahmida_source_2nd_edition.pdf
 └── README.md
     
 ````
